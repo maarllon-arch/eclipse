@@ -1,0 +1,12 @@
+﻿<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eclipse</title>
+<style>body{background:#0c0b0f;color:#e8e2d2;font:16px system-ui,sans-serif;text-align:center;padding:20vh 16px}h1{color:#d9b45f;letter-spacing:.3em}</style></head>
+<body><h1>ECLIPSE</h1><p id="m">Abrindo o site...</p>
+<script>
+var API='https://api.github.com/repos/maarllon-arch/eclipse/contents/atual.txt';
+function go(u){u=(u||'').trim();if(/^https:\/\/[a-z0-9-]+\.trycloudflare\.com\/?$/.test(u)){location.replace(u);}else{fail();}}
+function fail(){document.getElementById('m').textContent='O servidor esta desligado no momento. Tente de novo mais tarde.';}
+fetch(API,{headers:{Accept:'application/vnd.github.raw'},cache:'no-store'}).then(function(r){return r.text();}).then(go)
+.catch(function(){fetch('atual.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.text();}).then(go).catch(fail);});
+</script></body></html>
